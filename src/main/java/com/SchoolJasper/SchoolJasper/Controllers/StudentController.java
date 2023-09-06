@@ -1,7 +1,6 @@
 package com.SchoolJasper.SchoolJasper.Controllers;
 
 import com.SchoolJasper.SchoolJasper.Models.APICustomResponse;
-import com.SchoolJasper.SchoolJasper.Models.Course;
 import com.SchoolJasper.SchoolJasper.Models.Student;
 import com.SchoolJasper.SchoolJasper.Services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,10 +27,11 @@ public class StudentController extends GenericController{
                 "List of all students",
                 OK);
     }
-    @PostMapping
+    @PostMapping("{schoolId}")
     public ResponseEntity<?> createStudent(
+            @PathVariable("schoolId") Long schoolId,
             @RequestBody Student student) {
-        Long studentId = studentService.createStudent(student);
+        Long studentId = studentService.createStudent(schoolId, student);
         return createResponse(
                 Map.of("student_Id", studentId),
                 "Student has been created successfully",

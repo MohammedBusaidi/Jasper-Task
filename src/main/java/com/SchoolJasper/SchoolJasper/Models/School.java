@@ -1,6 +1,7 @@
 package com.SchoolJasper.SchoolJasper.Models;
 
 import com.SchoolJasper.SchoolJasper.BaseEntity.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,7 @@ public class School extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long schoolId;
     private String schoolName;
+    @JsonIgnore
     @OneToMany(mappedBy = "school")
-    private Set<Student> students;
+    private Set<Course> courses;
 }

@@ -1,13 +1,13 @@
 package com.SchoolJasper.SchoolJasper.Models;
 
 import com.SchoolJasper.SchoolJasper.BaseEntity.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.persistence.OneToMany;
 import java.util.Set;
 
 @Setter
@@ -20,6 +20,10 @@ public class Course extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long courseId;
     private String courseName;
+    private String courseCode;
+    @ManyToOne
+    @JoinColumn(name = "school_id")
+    private School school;
     @OneToMany(mappedBy = "course")
-    private Set<Mark> marks;
+    private Set<StudentCourse> studentCourses;
 }

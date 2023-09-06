@@ -25,6 +25,10 @@ public class SchoolService {
         return schoolRepository.findAll();
     }
 
+    public School getSchoolById(Long id){
+        return schoolRepository.findById(id).get();
+    }
+
     public void deleteSchool(Long schoolId) {
         School school = schoolRepository
                 .findById(schoolId)

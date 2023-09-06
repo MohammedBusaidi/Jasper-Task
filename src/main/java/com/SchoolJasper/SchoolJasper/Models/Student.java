@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Setter
 @Getter
@@ -22,8 +23,10 @@ public class Student extends BaseEntity {
     private int age;
     private String email;
     private String rollNumber;
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "school_id")
     private School school;
+    @JsonIgnore
+    @OneToMany(mappedBy = "student")
+    private Set<StudentCourse> studentCourses;
 }

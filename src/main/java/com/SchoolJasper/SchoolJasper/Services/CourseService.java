@@ -1,7 +1,9 @@
 package com.SchoolJasper.SchoolJasper.Services;
 
 import com.SchoolJasper.SchoolJasper.Models.Course;
+import com.SchoolJasper.SchoolJasper.Models.School;
 import com.SchoolJasper.SchoolJasper.Repositories.CourseRepository;
+import com.SchoolJasper.SchoolJasper.Repositories.SchoolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +14,13 @@ import java.util.List;
 public class CourseService {
     @Autowired
     CourseRepository courseRepository;
+    @Autowired
+    SchoolService schoolService;
 
-    public Long createCourse(Course course) {
+    public Long createCourse(Long schoolId, Course course) {
         LocalDateTime now = LocalDateTime.now();
+        School school = schoolService.getSchoolById(schoolId);
+        course.setSchool(school);
         course.setCreatedDate(now);
         course.setActive(true);
         courseRepository.save(course);
@@ -23,6 +29,10 @@ public class CourseService {
 
     public List<Course> getAllCourses() {
         return courseRepository.findAll();
+    }
+
+    public Course getCourseById(Long courseId){
+        return courseRepository.findById(courseId).get();
     }
 
     public void deleteCourse(Long courseId) {
