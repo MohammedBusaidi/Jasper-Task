@@ -1,5 +1,6 @@
 package com.SchoolJasper.SchoolJasper.Models;
 
+import com.SchoolJasper.SchoolJasper.BaseEntity.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Course {
+public class Course extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long courseId;

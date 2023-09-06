@@ -1,5 +1,6 @@
 package com.SchoolJasper.SchoolJasper.Models;
 
+import com.SchoolJasper.SchoolJasper.BaseEntity.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,7 +14,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Student {
+public class Student extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long studentId;
