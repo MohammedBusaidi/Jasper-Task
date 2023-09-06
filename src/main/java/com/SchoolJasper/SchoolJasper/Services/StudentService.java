@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class StudentService {
@@ -18,6 +19,10 @@ public class StudentService {
         student.setActive(true);
         studentRepository.save(student);
         return student.getStudentId();
+    }
+
+    public List<Student> getAllStudents() {
+        return studentRepository.findAll();
     }
 
 }
