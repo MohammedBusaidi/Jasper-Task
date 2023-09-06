@@ -21,6 +21,7 @@ public class Student extends BaseEntity {
     private String studentName;
     private int age;
     private String email;
+    private String rollNumber;
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "school_id")
