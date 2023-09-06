@@ -20,7 +20,16 @@ public class SchoolService {
         schoolRepository.save(school);
         return school.getSchoolId();
     }
+
     public List<School> getAllSchools() {
         return schoolRepository.findAll();
     }
+
+    public void deleteSchool(Long schoolId) {
+        School school = schoolRepository
+                .findById(schoolId)
+                .get();
+        schoolRepository.delete(school);
+    }
+
 }

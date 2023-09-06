@@ -25,4 +25,11 @@ public class StudentService {
         return studentRepository.findAll();
     }
 
+    public void deleteStudent(Long studentId) {
+        Student student = studentRepository
+                .findById(studentId)
+                .get();
+        studentRepository.delete(student);
+    }
+
 }

@@ -24,4 +24,11 @@ public class CourseService {
     public List<Course> getAllCourses() {
         return courseRepository.findAll();
     }
+
+    public void deleteCourse(Long courseId) {
+        Course course = courseRepository
+                .findById(courseId)
+                .get();
+        courseRepository.delete(course);
+    }
 }
